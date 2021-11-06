@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 
-<body>
+<body onload="getQ('Apples')" onbeforeunload="storeQ('Apples')">
 
   <div class="container-xxl pt-2">
 
@@ -59,11 +59,14 @@
       <img src="../images/apples.jpg" alt="Apples" />
       <div id="productInfo">
         <h2>Apples</h2>
-        <p>Wide Variety of fresh apples.</p>
-        <p class="price">$4.39/kg<br>(Average weight: 0.2 kg)</p>
-        <form>
+        <p id="txt-more-description">Wide variety of fresh apples including Granny Smith, Red Delicious, and Golden Delicious.</p>
+        <button id="bt-more-description" onclick="openDescription()">View Description...</button>
+        <p>$<span id="cost-per-kg">4.39</span>/kg<br>(Average weight: <span id="weight">0.2</span> kg)</p>
+        <form onsubmit="clearQ('Apples')">
           <label for="quantity">Quantity: </label>
-          <input type="number" id="quantity" name="quantity" value="0" min="0" max="100"><br>
+          <input type="number" id="quantity" onchange="updatePrice()" name="quantity" value="" min="0" max="100"><br>
+          <p id="tot-price-label">Total Price: </p>
+          <p id="tot-price">$0</p>
           <input type="submit" id="btSubmit" value="Add To Cart">
         </form>
       </div>
@@ -114,6 +117,8 @@
     </footer>
 
   </div>
+
+  <script src="../myScript1.js"></script>
 
 </body>
 

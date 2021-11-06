@@ -5,6 +5,7 @@ html, body{
   font-family: "Bahnschrift light";
   background-color: #efefef;
   font-size: 16px;
+  min-width: 500px;
 }
 
 a {
@@ -27,7 +28,6 @@ h1, h2, h3 {
 
 #mainHeader {
   background-color: #000;
-  padding: .5em 1em;
 }
 
 #logo {
@@ -85,13 +85,14 @@ h1, h2, h3 {
 @media screen and (max-width: 768px) {
   #mainHeader {
     height: 140px;
+    padding: .5em 0;
   }
   #logo {
     margin: auto;
   }
   #mainHeader nav {
     margin: auto;
-    width: 480px;
+    width: 460px;
   }
   #mainHeader nav a, .dropdown {
     float: right;
@@ -103,6 +104,7 @@ h1, h2, h3 {
 @media screen and (min-width: 768px) {
   #mainHeader {
     height: 75px;
+    padding: .5em 1em;
   }
   #logo {
     float: left;
@@ -373,14 +375,34 @@ h1, h2, h3 {
   padding: 1em;
 }
 
-#productDescription #btSubmit {
+#productDescription #tot-price, #productDescription #tot-price-label {
   margin: 1em 0;
+  display: inline-block;
+}
+
+#productDescription #btSubmit {
   background-color: #800;
   font-size: 1.2em;
   color: #fff;
   width: 100%;
-  padding: 0.3em;
+  padding-top: 0.3em;
 }
+
+#productDescription #txt-more-description {
+  display: none;
+}
+
+#productDescription #bt-more-description {
+  border: none;
+  text-align: left;
+  padding: 0;
+  margin-bottom: 1em;
+}
+
+#productDescription #bt-more-description:hover {
+  color: #800;
+}
+
 
 @media screen and (max-width: 768px) {
   #productDescription {
@@ -535,7 +557,7 @@ h1, h2, h3 {
 	grid-area: Quantity;
 	display: inline-flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: center !important;
 	justify-content: space-evenly;
 
 }
@@ -1252,6 +1274,17 @@ h1, h2, h3 {
 
 }
 
+.quantity{
+	margin: 0px;
+}
+
+.quantity2{
+	margin: 0px;
+}
+
+.line{
+	margin-top: 30px;
+}
 /* End of CSS for P4 */
 
 /* CSS for Login P5 */
@@ -1311,11 +1344,6 @@ large{
 
 .btnlogin {
     margin-top: 8px;
-}
-
-@viewport {
-    width: device-width;
-    zoom: 1.0;
 }
 
 #checkbox1 {
@@ -1786,6 +1814,14 @@ large{
   padding: 0.5em 0;
 }
 
+#productTable #order-quantity {
+  text-align: center;
+}
+
+#productTable a:hover, #productTable button:hover {
+  color: #800;
+}
+
 #productTable button {
   border: none;
 }
@@ -1805,7 +1841,7 @@ large{
   }
 }
 
-#bt_save {
+#bt_save, #btnProdAdd {
   display: block;
   margin: 2em auto;
   width: 10em;

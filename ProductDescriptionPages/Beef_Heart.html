@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="../FontAwesome/css/all.css">
   <title>Concordia Foods</title>
   <link rel="stylesheet" href="../style.css">
-</head>
-<body>
 
+</head>
+<body onload="getQ('BeefHeart')" onbeforeunload="storeQ('BeefHeart')">
 	<div class="container-xxl pt-2">
     <header id="mainHeader">
       <div id="logo">
@@ -52,10 +52,12 @@
 		<img src="../images/BeefHeart.jpg" alt="BeefHearts.jpg"/>
 		<div id="productInfo">
 			<p>Beef Heart from cows born and raised in Quebec.</p>
-      <class="price"><p>$12.13/kg<br>(535g per package)</p>
-      <form>
-        <label for="quantity">Quantity: </label>
-        <input type="number" id="quality" value="0" min="0" max="100"><br>
+      <p>$<span id="cost-per-kg">12.13</span>/kg<br>(Average weight: <span id="weight">0.54</span> kg)</p>
+        <form onsubmit="clearQ('BeefHeart')">
+          <label for="quantity">Quantity: </label>
+          <input type="number" id="quantity" onchange="updatePrice()" name="quantity" value="" min="0" max="100"><br>
+          <p id="tot-price-label">Total Price: </p>
+          <p id="tot-price">$0</p>
         <input type="submit" id="btSubmit" value="Add to Cart"/>
       </form>
     </div>
@@ -103,5 +105,7 @@
       </div>
     </div>
   </footer>
+  </div>
+  <script src="../myScript1.js"></script>
 </body>
 </html>
