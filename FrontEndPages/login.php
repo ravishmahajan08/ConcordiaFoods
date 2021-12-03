@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+ ?>
 <html>
 	<head>
 	<meta charset="utf-8"../>
@@ -19,9 +22,13 @@
 		    </div>
 		    <nav>
 		      <div class="dropdown">
-		        <button class="dropbtn active">Account</button>
+		        <<?php if(isset($_SESSION['StudentID'])){echo "<button class='dropbtn active'>".$_SESSION['StudentID']."</button>";}
+                    else{echo "<button class='dropbtn active'>Account</button>";}?>
 		        <div class="dropdown-content">
-		          <a href="../FrontEndPages/login.html">Login</a>
+		          <?php
+              if(isset($_SESSION['StudentID'])){echo'<a href="Logout.php">Logout</a>';}
+              else{echo'<a href="../FrontEndPages/login.php">Login</a>';}
+              ?>
 		          <a href="../FrontEndPages/p6.html">Sign Up</a>
 		        </div>
 		      </div>
@@ -55,6 +62,12 @@
 					<input type="password" name="Password" required><br><br>
 					<button type="submit"class="button">Login</button><br><br>
 				</form>
+				<?php
+					if(isset($_SESSION["error"])){
+						$error=$_SESSION["error"];
+						echo "<span id='error'>$error</span><br>";
+					}
+				 ?>
 			<a href="#forgot-pw" class="forgot-pw"><large>F</large>orgot <large>P</large>assword</a>
 		</article>
 	<footer id="mainFooter">
@@ -102,3 +115,6 @@
   </footer>
 </body>
 </html>
+<?php
+	unset($_SESSION["error"]);
+ ?>

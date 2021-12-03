@@ -1,6 +1,12 @@
  <!DOCTYPE html>
 <html lang="en">
 
+<?php 
+  //Get the product list from the json
+  $jsonFile = file_get_contents("../BackEndPages/Databases/ProductList.json");
+  $jsonFileDecoded = json_decode($jsonFile, true);
+?>
+
 <head>
   <meta charset="utf-8">
   <meta name="Description" content="Page #7, Product List">
@@ -35,11 +41,11 @@
         <div class="dropdown">
           <button class="dropbtn">Products</button>
           <div class="dropdown-content">
-            <a href="../AislePages/Produce_Aisle.html">Fruits & Vegetables</a>
-            <a href="../AislePages/MeatAisle.html">Meats</a>
-            <a href="../AislePages/FrozenFoods_Aisle.html">Frozen Foods</a>
-            <a href="../AislePages/Snacks_Aisle.html">Snacks</a>
-            <a href="../AislePages/drinksAisle.html">Drinks</a>
+            <a href="../AislePages/aisle.php?aisle=Fruits and Vegetables">Fruits & Vegetables</a>
+            <a href="../AislePages/aisle.php?aisle=Meats">Meats</a>
+            <a href="../AislePages/aisle.php?aisle=Frozen Foods">Frozen Foods</a>
+            <a href="../AislePages/aisle.php?aisle=Snacks">Snacks</a>
+            <a href="../AislePages/aisle.php?aisle=Drinks">Drinks</a>
           </div>
         </div>
         <a href="../index.html">Home</a>
@@ -50,59 +56,38 @@
       <h1>Product List</h1>
     </header>
 
-    <table id="productTable">
-      <tr>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Inventory</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-      <tr>
-        <td>Apples</td>
-        <td>$4.39/kg</td>
-        <td>100</td>
-        <td><a href="p8.html"><i class="fas fa-edit"></i></a></td>
-        <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-      </tr>
-      <tr>
-        <td>Bananas</td>
-        <td>$1.57/kg</td>
-        <td>100</td>
-        <td><a href="p8.html"><i class="fas fa-edit"></i></a></td>
-        <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-      </tr>
-      <tr>
-        <td>Carrots</td>
-        <td>$2.34/kg</td>
-        <td>100</td>
-        <td><a href="p8.html"><i class="fas fa-edit"></i></a></td>
-        <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-      </tr>
-      <tr>
-        <td>Cucumbers</td>
-        <td>$1.99/kg</td>
-        <td>100</td>
-        <td><a href="p8.html"><i class="fas fa-edit"></i></a></td>
-        <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-      </tr>
-      <tr>
-        <td>Oranges</td>
-        <td>$3.77/kg</td>
-        <td>100</td>
-        <td><a href="p8.html"><i class="fas fa-edit"></i></a></td>
-        <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-      </tr>
-      <tr>
-        <td>Peach</td>
-        <td>$2.15/kg</td>
-        <td>100</td>
-        <td><a href="p8.html"><i class="fas fa-edit"></i></a></td>
-        <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-      </tr>
-    </table>
-    
-    <button id="btnProdAdd" onClick="location.href='p8.html'"><i class="fas fa-plus-circle"></i> Add a Product</button>
+    <div class="fixTableHead">
+      <table id="productTable">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price ($)</th>
+            <th>Inventory</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            //Loop for every product
+            foreach($jsonFileDecoded as $product) {
+              if (!strcmp($product['name'], '') == 0) {
+                echo 
+                '<tr>
+                  <td>' . $product['name'] . '</td>
+                  <td>' . $product['price'] . '</td>
+                  <td>' . $product['inventory'] . '</td>
+                  <td><a href="p8.php?prod=' . $product['name'] . '"><i class="fas fa-edit"></i></a></td>
+                  <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
+                </tr>';
+              }     
+            }
+          ?>
+        </tbody>
+      </table>
+    </div>
+
+    <button id="btnProdAdd" onClick="location.href='p8.php?prod=new'"><i class="fas fa-plus-circle"></i> Add a Product</button>
 
     <footer id="mainFooter">
       <img id="logo" class="img-fluid" src="../images/CFlogo.png" alt="Concordia Foods logo">
@@ -110,11 +95,11 @@
         <div class="ftList">
           <p>Aisles</p>
           <ul>
-            <li><a href="../AislePages/Produce_Aisle.html">Fruits & Vegetables</a></li>
-            <li><a href="../AislePages/MeatAisle.html">Meats</a></li>
-            <li><a href="../AislePages/FrozenFoods_Aisle.html">Frozen Foods</a></li>
-            <li><a href="../AislePages/Snacks_Aisle.html">Snacks</a></li>
-            <li><a href="../AislePages/drinksAisle.html">Drinks</a></li>
+            <li><a href="../AislePages/aisle.php?aisle=Fruits and Vegetables">Fruits & Vegetables</a></li>
+            <li><a href="../AislePages/aisle.php?aisle=Meats">Meats</a></li>
+            <li><a href="../AislePages/aisle.php?aisle=Frozen Foods">Frozen Foods</a></li>
+            <li><a href="../AislePages/aisle.php?aisle=Snacks">Snacks</a></li>
+            <li><a href="../AislePages/aisle.php?aisle=Drinks">Drinks</a></li>
           </ul>
         </div>
         <div class="ftList">
@@ -137,8 +122,8 @@
         <div class="ftList">
           <p>Backend Functions</p>
           <ul>
-            <li><a href="ProductList.html">Product List</a></li>
-            <li><a href="p8.html">Edit a Product</a></li>
+            <li><a href="ProductList.php">Product List</a></li>
+            <li><a href="p8.php?prod=new">Edit a Product</a></li>
             <li><a href="UsersList.html">User List</a></li>
             <li><a href="User_Edit.html">Edit a User</a></li>
             <li><a href="p11.html">Order List</a></li>

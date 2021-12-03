@@ -59,7 +59,7 @@ function openDescription() {
     descr.style.display = "block";
     btn.innerHTML = "See Less...";
   }
-    
+  
 }
 
 
@@ -241,8 +241,6 @@ function delete_user(calling_element){
 
   console.log("d");
 }
-
-
 
 ////////////////////////////////////////////////////////////
 
