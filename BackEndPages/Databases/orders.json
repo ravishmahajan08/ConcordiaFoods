@@ -1,0 +1,63 @@
+[
+    {
+        "orderNum": "",
+        "studentId": "",
+        "totPrice": "",
+        "products": [
+            {
+                "name": "Add Products",
+                "quantity": "1"
+            }
+        ]
+    },
+    {
+        "orderNum": "1",
+        "studentId": "123457",
+        "totPrice": 109.16,
+        "products": [
+            {
+                "name": "Frozen Vegetables",
+                "quantity": "5"
+            },
+            {
+                "name": "Donuts",
+                "quantity": "5"
+            },
+            {
+                "name": "Apples",
+                "quantity": "5"
+            },
+            {
+                "name": "Bananas",
+                "quantity": "5"
+            },
+            {
+                "name": "Oranges",
+                "quantity": "10"
+            },
+            {
+                "name": "Carrots",
+                "quantity": "8"
+            },
+            {
+                "name": "Chicken Breasts",
+                "quantity": "3"
+            },
+            {
+                "name": "Coke",
+                "quantity": "8"
+            }
+        ]
+    },
+    {
+        "orderNum": "2",
+        "studentId": "891234",
+        "totPrice": 2.36,
+        "products": [
+            {
+                "name": "Bananas",
+                "quantity": "5"
+            }
+        ]
+    }
+]

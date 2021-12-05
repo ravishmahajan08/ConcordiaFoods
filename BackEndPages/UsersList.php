@@ -1,24 +1,52 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name = "Description" content = "Page #9, User List">
+    <meta name="keywords" content="grocery, food, store">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../FontAwesome/css/all.css">
+    <link rel="shortcut icon" href="../images/favicon.ico"../>
+    <title>Concordia Foods</title>
+  </head>
+<?php
 
-<head>
-  <meta charset="utf-8">
-  <meta name = "Description" content = "Page #12, Edit an Order">
-  <meta name = "Author" content = "Shiloh Rodrigues"> 
-  <meta name="keywords" content="grocery, food, store">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
-  <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="../FontAwesome/css/all.css">
-  <link rel="shortcut icon" href="../images/favicon.ico"../>
-  <title>Concordia Foods</title>  
-</head>
+$jsonLocation = "../BackEndPages/Databases/users.json";
+$jsonAccess = file_get_contents("$jsonLocation");
+$users;
+$users = json_decode($jsonAccess, true);
+
+
+if (isset($_POST['StudentID'])) {
+
+  //Loop through to find if there is a product with the same name to delete
+  $j = count($users);
+  for($i=0; $i<($j); $i++) {
+    if (strcmp($users[$i]['StudentID'], $_POST['StudentID']) == 0) {
+      unset($users[$i]);
+    }
+  }
+
+  //Rebase the array, since unset changes the format
+  $users = array_values($users);
+
+  //Reencode the json string and save it in the file
+  $json_string = json_encode($users, JSON_PRETTY_PRINT);
+  file_put_contents($jsonLocation, $json_string);
+
+  //Prevent data leaks... close the json file
+  unset($jsonLocation);
+
+}
+?>
+
 
 <body>
-  
+
   <div class="container-xxl pt-2">
-  
-    <header id="mainHeader">
+	<header id="mainHeader">
       <div id="logo">
         <a href="../index.html"><img class="img-fluid" src="../images/CFlogo.png" alt="Concordia Foods"></a>
       </div>
@@ -44,53 +72,45 @@
         <a href="../index.html">Home</a>
       </nav>
     </header>
-    
+
+
     <header id="backendHeader">
-      <h1>Edit an Order</h1>
+      <h1>User List</h1>
     </header>
-    
+
+
     <div class="fixTableHead">
       <table id="productTable">
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Quantity</th>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Apples</td>
-            <td><input type="number" id="order-quantity" min="0" max="100" value="0"></td>
-            <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-          </tr>
-          <tr>
-            <td>Bananas</td>
-            <td><input type="number" id="order-quantity" min="0" max="100" value="0"></td>
-            <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-          </tr>
-          <tr>
-            <td>Cucumbers</td>
-            <td><input type="number" id="order-quantity" min="0" max="100" value="0"></td>
-            <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-          </tr>
-          <tr>
-            <td>Ground Beef</td>
-            <td><input type="number" id="order-quantity" min="0" max="100" value="0"></td>
-            <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-          </tr>
-          <tr>
-            <td>T-Bone Steak</td>
-            <td><input type="number" id="order-quantity" min="0" max="100" value="0"></td>
-            <td><button onclick="deleteTableRow(this)"><i class="fas fa-times-circle"></i></button></td>
-          </tr>
+            <?php
+            foreach($users as $user) {
+              if (!strcmp($user['StudentID'], '') == 0) {
+                echo
+                '<tr>
+                  <td>' . $user['First_Name']. " " .$user["Last_Name"] . '</td>
+                  <td>' . $user['StudentID'] . '</td>
+                  <td><a href="User_Edit.php?user=' . $user['StudentID'] . '"><i class="fas fa-edit"></i></a></td>
+                  <td><button onclick="deleteUserRow(this)"><i class="fas fa-times-circle"></i></button></td>
+                </tr>';
+              }
+            }
+            ?>
         </tbody>
       </table>
     </div>
-    
-    <button id="bt_save">Save Changes</button>
-    
-    <footer id="mainFooter">
+
+    <button id="btnProdAdd" onClick="location.href='User_Edit.php?user=new'"><i class="fas fa-plus-circle"></i> Add a User</button>
+
+
+<footer id="mainFooter">
       <img id="logo" class="img-fluid" src="../images/CFlogo.png" alt="Concordia Foods logo">
       <div class="ftMain">
         <div class="ftList">
@@ -133,11 +153,9 @@
         </div>
       </div>
     </footer>
-  
   </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="../myScript1.js"></script>
-  
-</body>
 
-</html>
+</body>
