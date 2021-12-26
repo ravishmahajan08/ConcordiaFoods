@@ -1,35 +1,57 @@
 [
-  {
-    "StudentID" : "",
-    "First_Name":"",
-    "Last_Name":"",
-    "Password":"",
-    "E-mail":"",
-    "P_Number":"",
-    "M_Number":"",
-    "Address":"",
-    "Postal_Code":""
-  },
-  {
-    "StudentID" : "Admin",
-    "First_Name":"Admin",
-    "Last_Name":"Admin",
-    "Password":"Admin",
-    "E-mail":"admin@concordiaf.ca",
-    "P_Number":"555-555-5555",
-    "M_Number":"666-666-6666",
-    "Address":"117,John Street",
-    "Postal_Code":"HC1 4B5"
-  },
-  {
-    "StudentID" : "User",
-    "First_Name":"User",
-    "Last_Name":"User",
-    "Password":"User",
-    "E-mail":"user@concordiaf.ca",
-    "P_Number":"555-555-5555",
-    "M_Number":"666-666-6666",
-    "Address":"117,John Street",
-    "Postal_Code":"HC1 4B5"
-  }
+    {
+        "StudentID": "",
+        "First_Name": "",
+        "Last_Name": "",
+        "Password": "",
+        "E-mail": "",
+        "P_Number": "",
+        "M_Number": "",
+        "Address": "",
+        "Postal_Code": ""
+    },
+    {
+        "StudentID": "Admin",
+        "First_Name": "Admin",
+        "Last_Name": "Admin",
+        "Password": "Admin",
+        "E-mail": "admin@concordiaf.ca",
+        "P_Number": "555-555-5555",
+        "M_Number": "666-666-6666",
+        "Address": "117,John Street",
+        "Postal_Code": "HC1 4B5"
+    },
+    {
+        "StudentID": "40156605",
+        "First_Name": "Shiloh",
+        "Last_Name": "Rodrigues",
+        "Password": "test",
+        "E-mail": "shilohrodrigues@hotmail.com",
+        "P_Number": "15147738698",
+        "M_Number": "15147738698",
+        "Address": "H3Z 2K3",
+        "Postal_Code": "141 Irvine"
+    },
+    {
+        "StudentID": "261006",
+        "First_Name": "Emma",
+        "Last_Name": "Cloutier",
+        "Password": "test",
+        "E-mail": "shilohrodrigues@hotmail.com",
+        "P_Number": "15147738698",
+        "M_Number": "15147738698",
+        "Address": "141 Irvine",
+        "Postal_Code": "H3Z 2K3"
+    },
+    {
+        "StudentID": "1234567890",
+        "First_Name": "Billy",
+        "Last_Name": "Bob",
+        "Password": "test",
+        "E-mail": "shilohrodrigues@hotmail.com",
+        "P_Number": "5147738698",
+        "M_Number": "15147738698",
+        "Address": "5287 Doherty",
+        "Postal_Code": "H4V 2B4"
+    }
 ]

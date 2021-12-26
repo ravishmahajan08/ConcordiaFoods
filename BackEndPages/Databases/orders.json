@@ -13,8 +13,12 @@
     {
         "orderNum": "1",
         "studentId": "123457",
-        "totPrice": 109.16,
+        "totPrice": 151.96,
         "products": [
+            {
+                "name": "Pepsi",
+                "quantity": "10"
+            },
             {
                 "name": "Frozen Vegetables",
                 "quantity": "5"
@@ -52,8 +56,12 @@
     {
         "orderNum": "2",
         "studentId": "891234",
-        "totPrice": 2.36,
+        "totPrice": 10.04,
         "products": [
+            {
+                "name": "Peaches",
+                "quantity": "6"
+            },
             {
                 "name": "Bananas",
                 "quantity": "5"
